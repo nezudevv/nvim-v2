@@ -36,4 +36,4 @@ map("n", "<leader>gb", "<CMD>GitBlameToggle<CR>", { desc = "Git blame toggle" })
 map("n", "U", "<CMD>redo<CR>", { desc = "Redo last change" })
 
 -- diagnostic
-
+map("n", "<leader>df", function() vim.diagnostic.open_float { border = "rounded" } end, { desc = "LSP diagnostic float" })
