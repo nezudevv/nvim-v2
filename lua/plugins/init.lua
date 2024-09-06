@@ -22,19 +22,6 @@ return {
 
   {
     "williamboman/mason.nvim",
-    opts = {
-      ensure_installed = {
-        "lua-language-server",
-        "stylua",
-        "html-lsp",
-        "css-lsp",
-        "prettier",
-        "typescript-language-server",
-        "tailwindcss-language-server",
-        "svelteserver",
-        "eslint-lsp",
-      },
-    },
   },
   {
     "nvim-treesitter/nvim-treesitter",
@@ -164,7 +151,7 @@ return {
         sources = {
           -- You can add more sources here like formatters or diagnostics
           null_ls.builtins.diagnostics.eslint_d, -- ESLint for diagnostics
-          null_ls.builtins.formatting.prettier, -- Prettier for formatting
+          null_ls.builtins.formatting.prettier,  -- Prettier for formatting
         },
       }
     end,
