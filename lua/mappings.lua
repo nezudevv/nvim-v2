@@ -37,3 +37,13 @@ map("n", "U", "<CMD>redo<CR>", { desc = "Redo last change" })
 
 -- diagnostic
 map("n", "<leader>df", function() vim.diagnostic.open_float { border = "rounded" } end, { desc = "LSP diagnostic float" })
+
+-- obsidian
+    -- ["<leader>cn"] = {
+    --   "<CMD>lua if vim.opt.conceallevel:get() == 0 then vim.opt.conceallevel = 2 else vim.opt.conceallevel = 0 end<CR>",
+    --   "Toggle Markdown Concealment",
+    -- },
+    -- ["<leader>cj"] = {
+    --   "<CMD> ObsidianToggleCheckbox <CR>",
+    --   "Toggle Markdown Checklist",
+    -- },

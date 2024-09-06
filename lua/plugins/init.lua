@@ -12,33 +12,33 @@ return {
   },
 
   -- These are some examples, uncomment them if you want to see them work!
-  -- {
-  --   "neovim/nvim-lspconfig",
-  --   config = function()
-  --     require("nvchad.configs.lspconfig").defaults()
-  --     require "configs.lspconfig"
-  --   end,
-  -- },
-  --
-  -- {
-  -- 	"williamboman/mason.nvim",
-  -- 	opts = {
-  -- 		ensure_installed = {
-  -- 			"lua-language-server", "stylua",
-  -- 			"html-lsp", "css-lsp" , "prettier"
-  -- 		},
-  -- 	},
-  -- },
-  --
-  -- {
-  -- 	"nvim-treesitter/nvim-treesitter",
-  -- 	opts = {
-  -- 		ensure_installed = {
-  -- 			"vim", "lua", "vimdoc",
-  --      "html", "css"
-  -- 		},
-  -- 	},
-  -- },
+  {
+    "neovim/nvim-lspconfig",
+    config = function()
+      require("nvchad.configs.lspconfig").defaults()
+      require "configs.lspconfig"
+    end,
+  },
+
+  {
+    "williamboman/mason.nvim",
+    opts = {
+      ensure_installed = {
+        "lua-language-server", "stylua",
+        "html-lsp", "css-lsp", "prettier"
+      },
+    },
+  },
+
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+      ensure_installed = {
+        "vim", "lua", "vimdoc",
+        "html", "css"
+      },
+    },
+  },
   {
     "vhyrro/luarocks.nvim",
     priority = 1000,
@@ -113,4 +113,59 @@ return {
     "nvim-treesitter/nvim-treesitter-context",
     lazy = false,
   },
+  {
+    "epwalsh/obsidian.nvim",
+    version = "*", -- recommended, use latest release instead of latest commit
+    lazy = false,
+    ft = "markdown",
+    -- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
+    -- event = {
+    --   -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
+    --   -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/**.md"
+    --   "BufReadPre path/to/my-vault/**.md",
+    --   "BufNewFile path/to/my-vault/**.md",
+    -- },
+    dependencies = {
+      -- Required.
+      "nvim-lua/plenary.nvim",
+
+      -- see below for full list of optional dependencies 👇
+    },
+    opts = {
+      workspaces = {
+        {
+          name = "work",
+          path = "~/vaults/work",
+        },
+      },
+
+      -- see below for full list of options 👇
+    },
+  },
+  {
+    "jose-elias-alvarez/null-ls.nvim",
+    lazy = false,
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function()
+      local null_ls = require("null-ls")
+
+      null_ls.setup({
+        sources = {
+          -- You can add more sources here like formatters or diagnostics
+          null_ls.builtins.diagnostics.eslint_d, -- ESLint for diagnostics
+          null_ls.builtins.formatting.prettier,  -- Prettier for formatting
+        },
+      })
+    end,
+  },
+  {
+    "williamboman/mason-null-ls.nvim",
+    dependencies = { "jose-elias-alvarez/null-ls.nvim" },
+    config = function()
+      require("mason-null-ls").setup({
+        ensure_installed = { "eslint_d", "prettier" },     -- Ensure ESLint and Prettier are installed
+        automatic_installation = true,
+      })
+    end,
+  }
 }
