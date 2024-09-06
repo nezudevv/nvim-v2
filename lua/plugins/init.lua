@@ -29,10 +29,13 @@ return {
         "html-lsp",
         "css-lsp",
         "prettier",
+        "typescript-language-server",
+        "tailwindcss-language-server",
+        "svelteserver",
+        "eslint-lsp",
       },
     },
   },
-
   {
     "nvim-treesitter/nvim-treesitter",
     opts = {
@@ -42,6 +45,8 @@ return {
         "vimdoc",
         "html",
         "css",
+        "typescript",
+        "javascript",
       },
     },
   },
@@ -171,6 +176,27 @@ return {
       require("mason-null-ls").setup {
         ensure_installed = { "eslint_d", "prettier" }, -- Ensure ESLint and Prettier are installed
         automatic_installation = true,
+      }
+    end,
+  },
+  {
+    "ray-x/lsp_signature.nvim",
+    event = "VeryLazy",
+    opts = {},
+    config = function(_, opts)
+      require("lsp_signature").setup(opts)
+    end,
+  },
+  {
+    "folke/trouble.nvim",
+    dependencies = "nvim-tree/nvim-web-devicons", -- optional for icons
+    lazy = false,
+    config = function()
+      require("trouble").setup {
+        -- custom options
+        auto_open = false,
+        auto_preview = true,
+        use_diagnostic_signs = true,
       }
     end,
   },
