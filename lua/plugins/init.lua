@@ -24,8 +24,11 @@ return {
     "williamboman/mason.nvim",
     opts = {
       ensure_installed = {
-        "lua-language-server", "stylua",
-        "html-lsp", "css-lsp", "prettier"
+        "lua-language-server",
+        "stylua",
+        "html-lsp",
+        "css-lsp",
+        "prettier",
       },
     },
   },
@@ -34,8 +37,11 @@ return {
     "nvim-treesitter/nvim-treesitter",
     opts = {
       ensure_installed = {
-        "vim", "lua", "vimdoc",
-        "html", "css"
+        "vim",
+        "lua",
+        "vimdoc",
+        "html",
+        "css",
       },
     },
   },
@@ -147,25 +153,25 @@ return {
     lazy = false,
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
-      local null_ls = require("null-ls")
+      local null_ls = require "null-ls"
 
-      null_ls.setup({
+      null_ls.setup {
         sources = {
           -- You can add more sources here like formatters or diagnostics
           null_ls.builtins.diagnostics.eslint_d, -- ESLint for diagnostics
-          null_ls.builtins.formatting.prettier,  -- Prettier for formatting
+          null_ls.builtins.formatting.prettier, -- Prettier for formatting
         },
-      })
+      }
     end,
   },
   {
     "williamboman/mason-null-ls.nvim",
     dependencies = { "jose-elias-alvarez/null-ls.nvim" },
     config = function()
-      require("mason-null-ls").setup({
-        ensure_installed = { "eslint_d", "prettier" },     -- Ensure ESLint and Prettier are installed
+      require("mason-null-ls").setup {
+        ensure_installed = { "eslint_d", "prettier" }, -- Ensure ESLint and Prettier are installed
         automatic_installation = true,
-      })
+      }
     end,
-  }
+  },
 }
