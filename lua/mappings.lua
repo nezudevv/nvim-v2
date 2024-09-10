@@ -36,14 +36,24 @@ map("n", "<leader>gb", "<CMD>GitBlameToggle<CR>", { desc = "Git blame toggle" })
 map("n", "U", "<CMD>redo<CR>", { desc = "Redo last change" })
 
 -- diagnostic
-map("n", "<leader>df", function() vim.diagnostic.open_float { border = "rounded" } end, { desc = "LSP diagnostic float" })
+map("n", "<leader>df", function()
+  vim.diagnostic.open_float { border = "rounded" }
+end, { desc = "LSP diagnostic float" })
+
+-- Change note concealment level
+map(
+  "n",
+  "<leader>cl",
+  "<CMD>lua if vim.opt.conceallevel:get() == 0 then vim.opt.conceallevel = 2 else vim.opt.conceallevel = 0 end<CR>",
+  { desc = "Toggle Markdown Concealment Level" }
+)
 
 -- obsidian
-    -- ["<leader>cn"] = {
-    --   "<CMD>lua if vim.opt.conceallevel:get() == 0 then vim.opt.conceallevel = 2 else vim.opt.conceallevel = 0 end<CR>",
-    --   "Toggle Markdown Concealment",
-    -- },
-    -- ["<leader>cj"] = {
-    --   "<CMD> ObsidianToggleCheckbox <CR>",
-    --   "Toggle Markdown Checklist",
-    -- },
+-- ["<leader>cn"] = {
+--   "<CMD>lua if vim.opt.conceallevel:get() == 0 then vim.opt.conceallevel = 2 else vim.opt.conceallevel = 0 end<CR>",
+--   "Toggle Markdown Concealment",
+-- },
+-- ["<leader>cj"] = {
+--   "<CMD> ObsidianToggleCheckbox <CR>",
+--   "Toggle Markdown Checklist",
+-- },
